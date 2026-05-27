@@ -10,9 +10,9 @@ const links = {
     { href: "/association#rapport", label: "Rapport moral 2025" },
   ],
   actions: [
-    { href: "/evenements/champions-d-aix-2025", label: "Champion's d'Aix" },
-    { href: "/evenements/cinema-plein-air-2025", label: "Cinéma plein air" },
-    { href: "/evenements/fete-cuisines-du-monde-2025", label: "Cuisines du monde" },
+    { href: "/evenements/champions-d-aix-2026", label: "Champion's d'Aix III" },
+    { href: "/evenements/cinema-plein-air-2026", label: "Cinéma plein air" },
+    { href: "/evenements/fete-cuisines-du-monde-2026", label: "Cuisines du monde" },
     { href: "/evenements", label: "Tous les événements" },
   ],
   participer: [

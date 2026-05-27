@@ -127,10 +127,10 @@ export default function Hero() {
                   <span className="text-xs font-bold uppercase tracking-wide text-[#3B28CC]">Sport</span>
                 </div>
                 <p className="font-display font-bold text-sm text-[#2D2416] leading-tight mb-1">
-                  Champion&apos;s d&apos;Aix
+                  Champion&apos;s d&apos;Aix III
                 </p>
                 <p className="text-xs text-[#8B6F5E] font-semibold">
-                  Stade Garibaldi · 14 juin 2025
+                  Stade Garibaldi · 7 juin 2026
                 </p>
               </div>
 
@@ -143,7 +143,7 @@ export default function Hero() {
               {/* Floating badge */}
               <div className="absolute bottom-28 right-2 bg-[#F7F0E3] rounded-xl px-3 py-2 shadow-md flex items-center gap-2 text-xs font-bold text-[#2D2416] animate-[float_3s_ease-in-out_infinite]">
                 <span className="w-2 h-2 rounded-full bg-[#6B9E78]" />
-                Ciné plein air · Juillet
+                Ciné plein air · Juillet 2026
               </div>
 
             </div>
