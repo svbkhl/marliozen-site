@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Marlio'Zen — Direction Éditoriale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Epilogue:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:   #FAFAF7;
+      --sand:    #F0E8D8;
+      --sand-d:  #DDD0BC;
+      --black:   #1A1A18;
+      --ink:     #2C2C28;
+      --ash:     #6B6B60;
+      --brick:   #C93D1B;
+      --brick-l: #E86040;
+      --brick-pale: #FCE8E2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Epilogue', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid var(--black);
+    }
+
+    .nav-inner {
+      display: flex; align-items: stretch;
+      max-width: 100%;
+    }
+
+    .nav-logo-block {
+      padding: 0.875rem 2rem;
+      border-right: 2px solid var(--black);
+      display: flex; flex-direction: column; justify-content: center;
+      min-width: 220px;
+    }
+    .nav-logo-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--black); line-height: 1;
+    }
+    .nav-logo-sub {
+      font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--ash); margin-top: 0.2rem;
+    }
+
+    .nav-links-block {
+      display: flex; align-items: stretch;
+      flex: 1;
+    }
+    .nav-links-block a {
+      padding: 0 1.5rem;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--ink); text-decoration: none;
+      display: flex; align-items: center;
+      border-right: 1px solid rgba(26,26,24,0.1);
+      transition: background 200ms, color 200ms;
+    }
+    .nav-links-block a:hover {
+      background: var(--black); color: var(--white);
+    }
+
+    .nav-cta-block {
+      padding: 0.875rem 1.75rem;
+      background: var(--brick);
+      display: flex; align-items: center;
+      font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+      color: white; text-decoration: none;
+      transition: background 200ms;
+      white-space: nowrap;
+    }
+    .nav-cta-block:hover { background: #a83215; }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding-top: 5rem; /* nav height */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    .hero-left {
+      padding: 5rem 3rem 4rem 2.5rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      border-right: 2px solid var(--black);
+      position: relative;
+    }
+
+    .hero-issue {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--ash);
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 3rem;
+    }
+    .hero-issue::before {
+      content: ''; display: block;
+      width: 32px; height: 2px; background: var(--brick);
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 2rem;
+    }
+    .hero-headline .accent {
+      color: var(--brick);
+      font-style: italic;
+    }
+    .hero-headline .light {
+      font-weight: 300;
+    }
+
+    .hero-rule {
+      width: 100%; height: 2px;
+      background: linear-gradient(to right, var(--brick) 40%, transparent);
+      margin-bottom: 2rem;
+    }
+
+    .hero-summary {
+      font-size: 1rem; font-weight: 400; line-height: 1.6;
+      color: var(--ash); max-width: 400px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-summary strong { color: var(--ink); font-weight: 600; }
+
+    .hero-ctas { display: flex; gap: 1rem; align-items: center; }
+
+    .btn-editorial-primary {
+      background: var(--black); color: var(--white);
+      padding: 0.875rem 2rem;
+      font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em;
+      text-decoration: none; display: inline-block;
+      transition: background 200ms, transform 150ms;
+    }
+    .btn-editorial-primary:hover { background: var(--brick); transform: translateY(-2px); }
+
+    .btn-editorial-secondary {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--ink); text-decoration: none;
+      border-bottom: 2px solid var(--brick);
+      padding-bottom: 2px;
+      transition: color 200ms;
+    }
+    .btn-editorial-secondary:hover { color: var(--brick); }
+
+    .hero-stats-bar {
+      display: flex; border-top: 2px solid var(--black); padding-top: 1.5rem;
+    }
+    .hero-stat {
+      flex: 1; padding-right: 1.5rem;
+    }
+    .hero-stat + .hero-stat { border-left: 1px solid var(--sand-d); padding-left: 1.5rem; padding-right: 0; }
+    .hs-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 700; line-height: 1;
+      color: var(--black);
+    }
+    .hs-label {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--ash); margin-top: 0.25rem;
+    }
+
+    /* Hero right */
+    .hero-right {
+      background: var(--black);
+      padding: 5rem 3rem 4rem 3rem;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-right-deco {
+      position: absolute; top: 4rem; right: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12rem; font-weight: 700;
+      color: rgba(255,255,255,0.04);
+      line-height: 1; pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-featured-label {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--brick-l); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .featured-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--brick); animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .hero-featured-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; font-weight: 700; line-height: 1.1;
+      color: var(--white); margin-bottom: 1rem;
+    }
+    .hero-featured-title em { font-style: italic; font-weight: 300; color: var(--brick-l); }
+
+    .hero-featured-meta {
+      font-size: 0.8rem; font-weight: 600;
+      color: rgba(250,250,247,0.5);
+      display: flex; gap: 1.5rem;
+    }
+
+    .hero-featured-cta {
+      display: inline-block; margin-top: 2rem;
+      background: var(--brick);
+      color: white; padding: 0.75rem 1.75rem;
+      font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: background 200ms;
+    }
+    .hero-featured-cta:hover { background: var(--brick-l); }
+
+    /* ===== EVENTS SECTION ===== */
+    .events-section {
+      border-top: 2px solid var(--black);
+    }
+
+    .events-header {
+      display: flex; align-items: stretch;
+      border-bottom: 1px solid var(--sand-d);
+    }
+    .events-label {
+      padding: 1.25rem 2rem;
+      background: var(--brick); color: white;
+      font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em;
+      display: flex; align-items: center;
+      white-space: nowrap;
+    }
+    .events-tabs {
+      display: flex; flex: 1;
+    }
+    .events-tab {
+      padding: 1.25rem 1.75rem;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--ash); cursor: pointer;
+      border-right: 1px solid var(--sand-d);
+      transition: background 200ms, color 200ms;
+    }
+    .events-tab.active { background: var(--black); color: var(--white); }
+    .events-tab:hover:not(.active) { background: var(--sand); }
+
+    .events-see-all {
+      padding: 1.25rem 2rem; margin-left: auto;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--ink); text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      border-left: 1px solid var(--sand-d);
+      transition: background 200ms;
+    }
+    .events-see-all:hover { background: var(--sand); }
+
+    .events-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+    }
+
+    .event-item {
+      border-right: 1px solid var(--sand-d);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 250ms;
+    }
+    .event-item:last-child { border-right: none; }
+    .event-item:hover { background: var(--sand); }
+
+    .event-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem; font-weight: 400; font-style: italic;
+      color: var(--brick); margin-bottom: 0.5rem;
+    }
+
+    .event-category {
+      font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--ash); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .event-category::before {
+      content: ''; display: block;
+      width: 20px; height: 1px; background: currentColor;
+    }
+
+    .event-big-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-weight: 700; line-height: 1;
+      color: var(--black); margin-bottom: 0.25rem;
+    }
+    .event-month {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--brick); margin-bottom: 1.5rem;
+    }
+
+    .event-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 700; line-height: 1.15;
+      color: var(--black); margin-bottom: 0.75rem;
+    }
+
+    .event-desc {
+      font-size: 0.875rem; line-height: 1.6; color: var(--ash);
+      margin-bottom: 1.5rem;
+    }
+
+    .event-location {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--ink); display: flex; align-items: center; gap: 0.375rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--sand-d);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      border-top: 3px solid var(--brick);
+    }
+
+    .footer-top-bar {
+      display: flex; align-items: stretch;
+      border-bottom: 1px solid rgba(250,250,247,0.1);
+    }
+    .footer-logo-block {
+      padding: 2rem;
+      border-right: 1px solid rgba(250,250,247,0.1);
+      min-width: 260px;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--white); line-height: 1; margin-bottom: 0.375rem;
+    }
+    .footer-logo-sub {
+      font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;
+      color: rgba(250,250,247,0.4);
+    }
+    .footer-tagline-block {
+      padding: 2rem; flex: 1;
+      display: flex; align-items: center;
+    }
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-style: italic; font-weight: 300;
+      color: rgba(250,250,247,0.55); max-width: 480px; line-height: 1.5;
+    }
+    .footer-tagline strong {
+      color: var(--brick-l); font-style: normal; font-weight: 600;
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid rgba(250,250,247,0.1);
+    }
+    .footer-col {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(250,250,247,0.1);
+    }
+    .footer-col:last-child { border-right: none; }
+
+    .footer-col-heading {
+      font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--brick-l); margin-bottom: 1.25rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col a {
+      font-size: 0.875rem; color: rgba(250,250,247,0.55);
+      text-decoration: none; transition: color 200ms;
+    }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 2rem;
+      font-size: 0.75rem; color: rgba(250,250,247,0.3);
+    }
+    .footer-bottom-bar a {
+      color: rgba(250,250,247,0.3); text-decoration: none;
+      transition: color 200ms;
+    }
+    .footer-bottom-bar a:hover { color: rgba(250,250,247,0.6); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { border-right: none; }
+      .events-grid { grid-template-columns: 1fr; }
+      .event-item { border-right: none; border-bottom: 1px solid var(--sand-d); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links-block { display: none; }
+      .nav-logo-block { min-width: unset; }
+      .hero-left { padding: 4rem 1.25rem 3rem; }
+      .events-tabs .events-tab:nth-child(n+3) { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-top-bar { flex-direction: column; }
+      .footer-logo-block { min-width: unset; border-right: none; border-bottom: 1px solid rgba(250,250,247,0.1); }
+      .footer-bottom-bar { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo-block">
+        <div class="nav-logo-title">La Marlio'Zen</div>
+        <div class="nav-logo-sub">Espace de Vie Sociale · Aix-les-Bains</div>
+      </div>
+      <div class="nav-links-block">
+        <a href="#">L'association</a>
+        <a href="#">Événements</a>
+        <a href="#">Adhérer</a>
+        <a href="#">Partenaires</a>
+        <a href="#">Contact</a>
+      </div>
+      <a href="#" class="nav-cta-block">Nous rejoindre →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div>
+        <div class="hero-issue">EVS agréé CAF · Quartier Marlioz · Fondée en 2018</div>
+
+        <h1 class="hero-headline">
+          <span class="light">L'espace</span><br>
+          <span class="accent">de vie</span><br>
+          <span>sociale</span><br>
+          <span class="light">du quartier</span>
+        </h1>
+
+        <div class="hero-rule"></div>
+
+        <p class="hero-summary">
+          Une association portée par <strong>190 adhérents et bénévoles</strong> du quartier de Marlioz, à Aix-les-Bains. Vivre-ensemble, mixité sociale, solidarité et intergénérationnel comme fondements de notre engagement.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#" class="btn-editorial-primary">Découvrir l'association</a>
+          <a href="#" class="btn-editorial-secondary">Adhérer</a>
+        </div>
+      </div>
+
+      <div class="hero-stats-bar">
+        <div class="hero-stat">
+          <div class="hs-number">190</div>
+          <div class="hs-label">Adhérents & bénévoles</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-number">15+</div>
+          <div class="hs-label">Événements annuels</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-number">4</div>
+          <div class="hs-label">Partenaires institutionnels</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-right-deco">EVS</div>
+
+      <div class="hero-featured-label">
+        <span class="featured-dot"></span>
+        Prochain événement
+      </div>
+
+      <h2 class="hero-featured-title">
+        Champion's<br>d'<em>Aix</em><br>2025
+      </h2>
+
+      <div class="hero-featured-meta">
+        <span>⚽ Stade Garibaldi</span>
+        <span>📅 14 juin 2025</span>
+        <span>🕙 10h00</span>
+      </div>
+
+      <a href="#" class="hero-featured-cta">Voir l'événement →</a>
+    </div>
+  </section>
+
+  <!-- ÉVÉNEMENTS -->
+  <section class="events-section">
+    <div class="events-header">
+      <div class="events-label">Agenda</div>
+      <div class="events-tabs">
+        <div class="events-tab active">Tous</div>
+        <div class="events-tab">Sport</div>
+        <div class="events-tab">Culture</div>
+        <div class="events-tab">Solidarité</div>
+        <div class="events-tab">Festif</div>
+      </div>
+      <a href="#" class="events-see-all">Tous les événements →</a>
+    </div>
+
+    <div class="events-grid">
+      <!-- Événement 1 -->
+      <article class="event-item">
+        <div class="event-number">No. 01</div>
+        <div class="event-category">Sport · Inter-quartier</div>
+        <div class="event-big-date">14</div>
+        <div class="event-month">Juin 2025</div>
+        <h3 class="event-title">Champion's d'Aix</h3>
+        <p class="event-desc">Tournoi de football intergénérationnel ouvert à tous les quartiers d'Aix-les-Bains. Repas convivial offert par l'association.</p>
+        <div class="event-location">📍 Stade Garibaldi, Aix-les-Bains</div>
+      </article>
+
+      <!-- Événement 2 -->
+      <article class="event-item">
+        <div class="event-number">No. 02</div>
+        <div class="event-category">Culture · Famille</div>
+        <div class="event-big-date">18</div>
+        <div class="event-month">Juillet 2025</div>
+        <h3 class="event-title">Cinéma plein air & repas partagé</h3>
+        <p class="event-desc">Projection en plein air dans la cour de l'école primaire de Marlioz. Chacun apporte un plat à partager pour une soirée conviviale.</p>
+        <div class="event-location">📍 École primaire de Marlioz</div>
+      </article>
+
+      <!-- Événement 3 -->
+      <article class="event-item">
+        <div class="event-number">No. 03</div>
+        <div class="event-category">Festif · Solidarité</div>
+        <div class="event-big-date">20</div>
+        <div class="event-month">Septembre 2025</div>
+        <h3 class="event-title">Fête des cuisines du monde</h3>
+        <p class="event-desc">Grande fête de quartier autour des saveurs du monde. Chaque famille partage ses spécialités culinaires pour célébrer la diversité.</p>
+        <div class="event-location">📍 Quartier de Marlioz</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top-bar">
+      <div class="footer-logo-block">
+        <div class="footer-logo">La Marlio'Zen</div>
+        <div class="footer-logo-sub">Association loi 1901 · Agrément EVS</div>
+      </div>
+      <div class="footer-tagline-block">
+        <p class="footer-tagline">
+          « Portée par ses habitants, pour ses habitants. La Marlio'Zen est le lieu du <strong>vivre-ensemble</strong> du quartier de Marlioz à Aix-les-Bains. »
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-heading">Association</div>
+        <ul>
+          <li><a href="#">Notre histoire</a></li>
+          <li><a href="#">Projet social 2024–2027</a></li>
+          <li><a href="#">L'équipe et le bureau</a></li>
+          <li><a href="#">Agrément EVS</a></li>
+          <li><a href="#">Rapport moral 2025</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-heading">Actions</div>
+        <ul>
+          <li><a href="#">Champion's d'Aix</a></li>
+          <li><a href="#">Cinéma plein air</a></li>
+          <li><a href="#">Cuisines du monde</a></li>
+          <li><a href="#">Accès aux droits</a></li>
+          <li><a href="#">Soutien parentalité</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-heading">Partenaires</div>
+        <ul>
+          <li><a href="#">CAF de la Savoie</a></li>
+          <li><a href="#">OPAC de la Savoie</a></li>
+          <li><a href="#">Ville d'Aix-les-Bains</a></li>
+          <li><a href="#">Grand Lac</a></li>
+          <li><a href="#">Devenir partenaire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-heading">Contact</div>
+        <ul>
+          <li><a href="#">74 Bd de la Roche du Roi</a></li>
+          <li><a href="#">73100 Aix-les-Bains</a></li>
+          <li><a href="#">06.46.31.60.09</a></li>
+          <li><a href="#">contact@marliozen.fr</a></li>
+          <li><a href="#">Nous écrire →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <span>© 2025 La Marlio'Zen · Tous droits réservés</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a> · <a href="#">Plan du site</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>

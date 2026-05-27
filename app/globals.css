@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ── Fonts ── */
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-nunito);
+
+  /* ── Brand colors ── */
+  --color-cream:        #F7F0E3;
+  --color-paper:        #EDE5D0;
+  --color-paper-dark:   #DDD0BC;
+  --color-terra:        #C4622D;
+  --color-terra-light:  #E8885E;
+  --color-terra-pale:   #F5D5C0;
+  --color-sage:         #6B9E78;
+  --color-sage-dark:    #4A7A56;
+  --color-sage-light:   #C8E0CC;
+  --color-honey:        #D4A853;
+  --color-honey-light:  #F5E4B3;
+  --color-warm-dark:    #2D2416;
+  --color-warm-mid:     #5C4033;
+  --color-warm-soft:    #8B6F5E;
+  --color-warm-white:   #FDF8F0;
+
+  /* ── Shadcn/ui compatibility overrides ── */
+  --color-background:   var(--color-cream);
+  --color-foreground:   var(--color-warm-dark);
+  --color-primary:      var(--color-terra);
+  --color-primary-foreground: #fff;
+  --color-secondary:    var(--color-paper);
+  --color-secondary-foreground: var(--color-warm-dark);
+  --color-muted:        var(--color-paper);
+  --color-muted-foreground: var(--color-warm-soft);
+  --color-accent:       var(--color-terra-pale);
+  --color-accent-foreground: var(--color-terra);
+  --color-border:       var(--color-paper-dark);
+  --color-ring:         var(--color-terra);
+
+  /* ── Radius ── */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-2xl:  2rem;
+  --radius:      0.5rem;
+
+  /* ── Spacing extras ── */
+  --spacing-section-sm: clamp(3rem, 6vw, 5rem);
+  --spacing-section-md: clamp(4rem, 8vw, 7rem);
+  --spacing-section-lg: clamp(5rem, 10vw, 9rem);
+}
+
+:root {
+  --background: #F7F0E3;
+  --foreground: #2D2416;
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-warm-dark);
+  font-family: var(--font-body), 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Typography helpers ── */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+h1, h2, h3, .heading {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* ── Focus visible ── */
+:focus-visible {
+  outline: 2px solid var(--color-terra);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Scrollbar (soft) ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-paper); }
+::-webkit-scrollbar-thumb { background: var(--color-terra-pale); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-terra-light); }
+
+/* ── Selection ── */
+::selection {
+  background: var(--color-terra-pale);
+  color: var(--color-terra);
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Reduce motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ── Torn paper SVG decoration ── */
+.torn-top {
+  clip-path: polygon(
+    0% 100%, 0% 8%, 2% 4%, 4% 7%, 6% 3%, 8% 6%, 10% 2%, 12% 5%, 14% 1%,
+    16% 4%, 18% 0%, 20% 3%, 22% 7%, 24% 3%, 26% 6%, 28% 2%, 30% 5%, 32% 0%,
+    34% 4%, 36% 7%, 38% 3%, 40% 6%, 42% 2%, 44% 5%, 46% 1%, 48% 4%, 50% 0%,
+    52% 3%, 54% 7%, 56% 3%, 58% 6%, 60% 2%, 62% 5%, 64% 1%, 66% 4%, 68% 7%,
+    70% 3%, 72% 6%, 74% 2%, 76% 5%, 78% 0%, 80% 4%, 82% 7%, 84% 3%, 86% 6%,
+    88% 2%, 90% 5%, 92% 1%, 94% 4%, 96% 0%, 98% 3%, 100% 6%, 100% 100%
+  );
+}
+
+/* ── Prose ── */
+.prose-marliozen p { margin-bottom: 1rem; line-height: 1.7; color: var(--color-warm-mid); }
+.prose-marliozen h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-warm-dark); }
