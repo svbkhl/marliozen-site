@@ -1,55 +1,10 @@
 "use client"
 
-import { useInView } from "framer-motion"
-import { useRef, useEffect, useState } from "react"
 import { stats } from "@/data/stats"
 import BlurFadeIn from "@/components/shared/BlurFadeIn"
-
-function CountUp({
-  target,
-  suffix,
-  duration = 1500,
-  active,
-}: {
-  target: number
-  suffix: string
-  duration?: number
-  active: boolean
-}) {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    if (!active) return
-    const steps = 40
-    const step = target / steps
-    const interval = duration / steps
-    let current = 0
-
-    const timer = setInterval(() => {
-      current += step
-      if (current >= target) {
-        setCount(target)
-        clearInterval(timer)
-      } else {
-        setCount(Math.floor(current))
-      }
-    }, interval)
-
-    return () => clearInterval(timer)
-  }, [active, target, duration])
-
-  return (
-    <span>
-      {count}
-      {suffix}
-    </span>
-  )
-}
+import CountUp from "@/components/shared/CountUp"
 
 export default function StatsCounter() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
   return (
     <section className="bg-[#EDE5D0] py-16 md:py-20" aria-label="Chiffres clés">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
@@ -63,7 +18,6 @@ export default function StatsCounter() {
         </BlurFadeIn>
 
         <div
-          ref={ref}
           className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           role="list"
           aria-label="Statistiques de l'association"
@@ -81,7 +35,6 @@ export default function StatsCounter() {
                   <CountUp
                     target={stat.value}
                     suffix={stat.suffix}
-                    active={isInView}
                     duration={1200 + i * 200}
                   />
                 </p>

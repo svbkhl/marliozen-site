@@ -3,6 +3,7 @@ import Image from "next/image"
 import { ArrowRight, Users, Calendar, Building2 } from "lucide-react"
 import OrganicShape from "@/components/shared/OrganicShape"
 import BlurFadeIn from "@/components/shared/BlurFadeIn"
+import CountUp from "@/components/shared/CountUp"
 
 export default function Hero() {
   return (
@@ -87,13 +88,13 @@ export default function Hero() {
                 aria-label="Chiffres clés"
               >
                 {[
-                  { icon: Users, value: "190", label: "Adhérents & bénévoles" },
-                  { icon: Calendar, value: "15+", label: "Événements / an" },
-                  { icon: Building2, value: "4", label: "Partenaires institutionnels" },
-                ].map(({ icon: Icon, value, label }) => (
+                  { icon: Users, target: 190, suffix: "", label: "Adhérents & bénévoles", duration: 1600 },
+                  { icon: Calendar, target: 15, suffix: "+", label: "Événements / an", duration: 1200 },
+                  { icon: Building2, target: 4, suffix: "", label: "Partenaires institutionnels", duration: 800 },
+                ].map(({ icon: Icon, target, suffix, label, duration }) => (
                   <div key={label} role="listitem">
-                    <p className="font-display text-4xl font-bold text-[#3B28CC] leading-none" aria-label={`${value} ${label}`}>
-                      {value}
+                    <p className="font-display text-4xl font-bold text-[#3B28CC] leading-none" aria-label={`${target}${suffix} ${label}`}>
+                      <CountUp target={target} suffix={suffix} duration={duration} />
                     </p>
                     <p className="text-xs font-semibold text-[#8B6F5E] uppercase tracking-[0.06em] mt-1">
                       {label}
